@@ -45,6 +45,10 @@ if (!state.dead) {
   state.diligence += dilig;
   state.promptCount += 1;
 
+  // a genuinely good prompt makes the pet dance for a few seconds (status line
+  // picks up the window via state.actionUntil).
+  if (intel >= 1.5) state.actionUntil = now + 6000;
+
   // long neglect upsets the pet
   if (dilig <= -1 && !state.sulking) setSulk(state, '너무 오래 혼자 뒀어요');
 
