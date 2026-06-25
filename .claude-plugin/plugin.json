@@ -1,6 +1,6 @@
 {
   "name": "claudchi",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "클로드 키우기 — raise a Claude pet that grows through a fixed family tree based on how well you use AI. Prompt quality, diligence and tool-hygiene shape which of 12 adult forms it becomes; context-window usage is its lifespan; pets breed across sessions and surprise minigames keep it alive.",
   "author": {
     "name": "maetdori"
