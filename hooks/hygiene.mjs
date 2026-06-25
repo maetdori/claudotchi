@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 // hooks/hygiene.mjs — PostToolUse.
 //   * tool errors leave "mess" -> 🧼 cleanliness drops; clean runs nudge it up
-//   * if a ⏱️ reaction challenge was armed, the elapsed time scores ⭐ reflex
 
-import { readInput, emitAdditionalContext } from '../lib/io.mjs';
+import { readInput } from '../lib/io.mjs';
 import { loadOrCreate, saveState } from '../lib/state.mjs';
-import { scoreReaction } from '../lib/minigame.mjs';
 
 function isError(resp) {
   if (!resp) return false;
@@ -20,10 +18,8 @@ function isError(resp) {
 const input = await readInput();
 const sessionId = input.session_id || input.sessionId || 'unknown';
 const resp = input.tool_response ?? input.toolResponse;
-const now = Date.now();
 
 const state = loadOrCreate(sessionId, input.cwd || '');
-let note = '';
 
 if (!state.dead) {
   state.toolCalls += 1;
@@ -33,14 +29,6 @@ if (!state.dead) {
   } else {
     state.cleanliness += 0.2;
   }
-
-  // resolve a reaction challenge if one was armed at PreToolUse
-  if (state.challenge && state.challenge.armed) {
-    const r = scoreReaction(state, now);
-    if (r && r.gained > 0) note = `⏱️ 반응 챌린지 ${r.label}! (${r.sec}s) ⭐순발력 +${r.gained}`;
-    else if (r) note = '⏱️ 반응 챌린지 아쉽게 놓쳤어요.';
-  }
 }
 
 saveState(state);
-if (note) emitAdditionalContext('PostToolUse', note);
