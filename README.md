@@ -1,4 +1,4 @@
-# 클로드 키우기 (claude-tamagotchi)
+# 클로드 키우기 (claudchi)
 
 > Claude Code 플러그인 — 당신이 AI를 **어떻게** 쓰는지에 따라 자라나는 다마고치형 가상 펫.
 > 좋은 프롬프트를 먹이고, 꾸준히 돌보고, 도구 실수를 줄이면 예쁜 클로드로 자랍니다.
@@ -56,10 +56,10 @@
 
 여러 세션/프로젝트에서 각각 펫을 키우게 됩니다. 그 펫들을 **교배**해 자손을 만들 수 있어요.
 
-- `/claude-tamagotchi:breed` — 다른 세션 펫들의 후보 목록을 봅니다.
-- `/claude-tamagotchi:breed 1 2` — 1번과 2번을 교배 → 자손 알이 대기열에 생깁니다.
+- `/claudchi:breed` — 다른 세션 펫들의 후보 목록을 봅니다.
+- `/claudchi:breed 1 2` — 1번과 2번을 교배 → 자손 알이 대기열에 생깁니다.
   다음에 새 세션을 열면(또는 현재 펫이 수명을 다하면) 그 자손이 부화합니다.
-- `/claude-tamagotchi:family` — 역대 세대 묘비 + 현재 살아있는 펫의 가계도를 봅니다.
+- `/claudchi:family` — 역대 세대 묘비 + 현재 살아있는 펫의 가계도를 봅니다.
 
 각 펫은 **genome**(지능/성실/청결 선천 편향 + 색·액세서리·가문명 형질)을 가지며,
 두 부모의 genome이 **결정적으로 재조합**(랜덤 아님)되어 같은 종이라도 개체가 유니크합니다.
@@ -89,8 +89,8 @@
 마켓플레이스/로컬 플러그인으로 추가합니다 (Claude Code 버전에 맞는 방식 사용):
 
 ```
-/plugin marketplace add maetdori/claude-tamagotchi
-/plugin install claude-tamagotchi
+/plugin marketplace add maetdori/claudchi
+/plugin install claudchi
 ```
 
 또는 이 저장소를 로컬에 클론한 뒤 로컬 마켓플레이스로 추가하세요.
@@ -103,16 +103,16 @@
 {
   "statusLine": {
     "type": "command",
-    "command": "node \"<경로>/claude-tamagotchi/statusline/tamagotchi.mjs\"",
+    "command": "node \"<경로>/claudchi/statusline/claudchi.mjs\"",
     "padding": 0,
     "refreshInterval": 3000
   },
   "hooks": {
-    "SessionStart": [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claude-tamagotchi/hooks/init.mjs\"" }] }],
-    "PreCompact":   [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claude-tamagotchi/hooks/init.mjs\"" }] }],
-    "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claude-tamagotchi/hooks/feed.mjs\"" }] }],
-    "PreToolUse":  [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"<경로>/claude-tamagotchi/hooks/gate.mjs\"" }] }],
-    "PostToolUse": [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"<경로>/claude-tamagotchi/hooks/hygiene.mjs\"" }] }]
+    "SessionStart": [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/init.mjs\"" }] }],
+    "PreCompact":   [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/init.mjs\"" }] }],
+    "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/feed.mjs\"" }] }],
+    "PreToolUse":  [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/gate.mjs\"" }] }],
+    "PostToolUse": [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/hygiene.mjs\"" }] }]
   }
 }
 ```
@@ -122,14 +122,14 @@
 
 ## 설정
 
-- `TAMAGOTCHI_LLM=1` + `ANTHROPIC_API_KEY` — 프롬프트 품질을 휴리스틱 대신 가벼운
+- `CLAUDCHI_LLM=1` + `ANTHROPIC_API_KEY` — 프롬프트 품질을 휴리스틱 대신 가벼운
   모델(기본 `claude-haiku-4-5`)로 채점합니다. 실패/타임아웃 시 휴리스틱으로 자동 대체.
   미설정 시 기본은 **휴리스틱(무료·즉시)**.
-- `TAMAGOTCHI_LLM_MODEL` — 채점에 쓸 모델 ID 오버라이드.
+- `CLAUDCHI_LLM_MODEL` — 채점에 쓸 모델 ID 오버라이드.
 
 ## 데이터 위치
 
-모든 상태는 `~/.claude/tamagotchi/` 아래에 저장됩니다.
+모든 상태는 `~/.claude/claudchi/` 아래에 저장됩니다.
 
 - `state-<session_id>.json` — 세션별(=펫별) 상태
 - `graveyard.json` — 역대 세대 묘비/족보
@@ -141,7 +141,7 @@
 
 | 구성요소 | 이벤트 | 하는 일 |
 |---|---|---|
-| `statusline/tamagotchi.mjs` | (상태표시줄 갱신) | 컨텍스트%로 나이 계산·진화·죽음 기록·렌더 |
+| `statusline/claudchi.mjs` | (상태표시줄 갱신) | 컨텍스트%로 나이 계산·진화·죽음 기록·렌더 |
 | `hooks/feed.mjs` | UserPromptSubmit | 품질→🧠, 규칙성→⚡, 삐짐 해제, 퀴즈 |
 | `hooks/gate.mjs` | PreToolUse | 삐짐 시 도구 차단, 반응 챌린지 발동 |
 | `hooks/hygiene.mjs` | PostToolUse | 도구 에러→🧼, 반응 챌린지 채점→⭐ |
