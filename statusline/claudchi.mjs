@@ -21,7 +21,11 @@ state.lastContextPct = pct;
 if (!state.bornTs) state.bornTs = Date.now();
 
 // Age the pet: evolve its form to match its age (no-op once it matches).
-if (!state.dead) advance(state, pct);
+// A real evolution stamps lastEvolveTs so the sprite sparkles for a few seconds.
+if (!state.dead) {
+  const events = advance(state, pct);
+  if (events.length) state.lastEvolveTs = Date.now();
+}
 
 // Death at end of lifespan: record the tombstone exactly once.
 if (!state.dead && pct >= LIFESPAN_PCT) {
@@ -30,4 +34,4 @@ if (!state.dead && pct >= LIFESPAN_PCT) {
 }
 
 saveState(state);
-process.stdout.write(render(state, pct));
+process.stdout.write(render(state, pct, Date.now()));
