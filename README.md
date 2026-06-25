@@ -89,11 +89,17 @@
 마켓플레이스/로컬 플러그인으로 추가합니다 (Claude Code 버전에 맞는 방식 사용):
 
 ```
-/plugin marketplace add maetdori/claudchi
+/plugin marketplace add https://github.com/maetdori/claudchi.git
 /plugin install claudchi
 ```
 
 또는 이 저장소를 로컬에 클론한 뒤 로컬 마켓플레이스로 추가하세요.
+
+설치 후 새 세션을 한 번 열면 끝입니다. **statusLine은 SessionStart 훅이
+`~/.claude/settings.json`에 자동으로 등록**하므로 직접 편집할 필요가 없습니다.
+(Claude Code 플러그인은 statusLine을 네이티브로 선언할 수 없어 이렇게 처리합니다.
+이미 다른 statusLine을 쓰고 있으면 덮어쓰지 않고 그대로 둡니다 — 그 경우 아래
+수동 설치의 statusLine 항목을 참고해 직접 바꾸세요. 설정은 보존됩니다.)
 
 ### B. 수동 설치 (플러그인 없이)
 
