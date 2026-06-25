@@ -5,7 +5,7 @@
 
 import { readInput } from '../lib/io.mjs';
 import { loadOrCreate, saveState } from '../lib/state.mjs';
-import { shouldTrigger, REACTION_CHANCE, armReaction } from '../lib/minigame.mjs';
+import { shouldTrigger, REACTION_CHANCE, armReaction, MINIGAMES_ON } from '../lib/minigame.mjs';
 
 const PROMPTING_TOOLS = new Set(['Edit', 'Write', 'MultiEdit', 'NotebookEdit', 'Bash']);
 
@@ -16,7 +16,7 @@ const now = Date.now();
 
 const state = loadOrCreate(sessionId, input.cwd || '');
 
-if (!state.dead && state.sulking) {
+if (!state.dead && MINIGAMES_ON && state.sulking) {
   // Block the tool — but tell the user exactly how to lift the block.
   process.stdout.write(JSON.stringify({
     hookSpecificOutput: {

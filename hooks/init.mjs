@@ -8,7 +8,7 @@
 import { readInput, emitAdditionalContext } from '../lib/io.mjs';
 import { loadState, saveState, defaultState, loadPending, clearPending } from '../lib/state.mjs';
 import { recordDeath } from '../lib/graveyard.mjs';
-import { node } from '../lib/chart.mjs';
+import { node, LIFESPAN_PCT } from '../lib/chart.mjs';
 import { deriveTraits } from '../lib/genome.mjs';
 import { ensureStatusline } from '../lib/install.mjs';
 
@@ -62,12 +62,12 @@ if (hatched) {
     ? `${hatched.generation}대 (교배로 태어난 ${traits.family})`
     : `1대 ${traits.family}`;
   parts.push(
-    `🥚 클로드 키우기: 새 ${n.emoji} ${n.name}가 태어났어요 — ${lineage}. 좋은 프롬프트로 잘 키워주세요! (수명 = 컨텍스트 40%)`,
+    `🥚 클로도치: 새 ${n.emoji} ${n.name}가 태어났어요 — ${lineage}. 좋은 프롬프트로 잘 키워주세요! (수명 = 컨텍스트 ${LIFESPAN_PCT}%)`,
   );
 }
 if (slResult.action === 'installed' || slResult.action === 'updated') {
   parts.push('🎀 펫 상태표시줄을 settings.json에 등록했어요 — 세션을 한 번 새로 열면 화면 하단에 알이 나타납니다.');
 } else if (slResult.action === 'skipped-existing') {
-  parts.push('ℹ️ 이미 사용자 지정 상태표시줄이 있어 그대로 두었어요. 펫을 보려면 statusLine을 claudchi.mjs로 바꿔주세요.');
+  parts.push('ℹ️ 이미 사용자 지정 상태표시줄이 있어 그대로 두었어요. 펫을 보려면 statusLine을 claudochi.mjs로 바꿔주세요.');
 }
 if (parts.length) emitAdditionalContext(event, parts.join('\n'));

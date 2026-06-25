@@ -1,12 +1,12 @@
-# 클로드 키우기 (claudchi)
+# 클로도치 (claudochi)
 
 > Claude Code 플러그인 — 당신이 AI를 **어떻게** 쓰는지에 따라 자라나는 다마고치형 가상 펫.
 > 좋은 프롬프트를 먹이고, 꾸준히 돌보고, 도구 실수를 줄이면 예쁜 클로드로 자랍니다.
 > 컨텍스트 사용량이 **수명**이라, 펫을 보는 것만으로 내가 컨텍스트를 얼마나 썼는지 알 수 있어요.
 
 ```
-🥚 알  →  🐣 알클로  →  🐤 (지능)  →  🧒 (성실)  →  🧑 성체 12종  →  💀
-        (수명 = 컨텍스트 0% ───────────────────────────────→ 40%)
+🥚 알  →  🐣 아기클  →  🐤 (지능)  →  🧒 (성실)  →  🧑 성체 12종 + 히든  →  💀
+        (수명 = 컨텍스트 0% ──────────────────────────→ 기본 40%, 조절 가능)
 ```
 
 ## 어떻게 자라나요?
@@ -28,38 +28,41 @@
 | ⚡ 성실 | 꾸준한 상호작용 (긴 방치 X) | 배고픔/방치 |
 | 🧼 청결 | 도구 에러·실패가 적음 | 똥/청소 |
 | ⭐ 순발력 *(보조)* | 반응 챌린지 빠른 승인 | 미니게임 |
-| ❤️ 유대 *(보조)* | 퀴즈 정답, 삐짐 풀어주기 | 교감 |
+| ❤️ 교감 *(보조)* | 퀴즈 정답, 삐짐 풀어주기 | 애정 |
 
 ### 성장 가계도 (12종 + 히든)
 
 ```
-🥚알 → 🐣알클로
- │  [성장기:🧠지능]      [청년기:⚡성실]        [성체:🧼청결]
- ├─🧠高→ 🐤똘똘이 ─┬─⚡高→ 🧒부지런모범생 ─┬─🧼高→ ✨ 마스터클로드   (S)
- │                │                      └─🧼低→ 🧪 너드클로드     (A)
- │                └─⚡低→ 🧒느긋수재   ─┬─🧼高→ 😎 프로클로드     (A)
- │                                      └─🧼低→ 🦥 방구석천재     (B)
- ├─🧠중→ 🐤평범이 ─┬─⚡高→ 🧒성실평범 ─┬─🧼高→ 🙂 모범시민클로드 (B)
- │                │                    └─🧼低→ 🐷 먹보클로드     (C)
- │                └─⚡低→ 🧒느긋평범 ─┬─🧼高→ 🐱 마이페이스클로 (C)
- │                                    └─🧼低→ 🥱 게으름보       (C)
- └─🧠低→ 🐤말썽이 ─┬─⚡高→ 🧒부지런말썽 ─┬─🧼高→ 🤡 삐에로클로드  (D)
-                  │                      └─🧼低→ 👹 폭주클로드    (D)
-                  └─⚡低→ 🧒방치말썽   ─┬─🧼高→ 🧟 좀비클로드    (D)
-                                        └─🧼低→ 🧓 오야지치      (F)
+🥚알 → 🐣아기클
+ │  [성장기:🧠지능]    [청년기:⚡성실]    [성체:🧼청결]
+ ├─🧠高→ 🐤똘똘클 ─┬─⚡高→ 🧒근면클 ─┬─🧼高→ ✨ 마스터클 (S)
+ │                │                └─🧼低→ 🧪 너드클   (A)
+ │                └─⚡低→ 🧒여유클 ─┬─🧼高→ 😎 프로클   (A)
+ │                                  └─🧼低→ 🦥 방구석클 (B)
+ ├─🧠중→ 🐤평범클 ─┬─⚡高→ 🧒성실클 ─┬─🧼高→ 🙂 모범클  (B)
+ │                │                └─🧼低→ 🐷 먹보클   (C)
+ │                └─⚡低→ 🧒느긋클 ─┬─🧼高→ 🐱 마페클   (C)
+ │                                  └─🧼低→ 🥱 게으른클 (C)
+ └─🧠低→ 🐤말썽클 ─┬─⚡高→ 🧒부산클 ─┬─🧼高→ 🤡 삐에로클 (D)
+                  │                └─🧼低→ 👹 폭주클   (D)
+                  └─⚡低→ 🧒방치클 ─┬─🧼高→ 🧟 좀비클   (D)
+                                    └─🧼低→ 🧓 아재클   (F)
 ```
 
 경로 의존적이라, 방치하며 키운 아이는 나중에 잘해도 곧장 마스터가 될 수 없습니다.
-🌟 **레전드클로드**(히든)는 완벽한 케어 + 명문 혈통(세대 3↑, 유대·순발력 충족) 시 등장.
+🌟 **레전드클**(히든)은 완벽한 케어 + 명문 혈통(세대 3↑, 교감·순발 충족) 시 등장.
+가문(家)은 **클로드家·오퍼스家·소네트家·하이쿠家·페이블家·다오家** 중에서 상속됩니다.
+
+> 전 종류의 모습·등급·프로필은 **[도감 → DOGAM.md](DOGAM.md)** 참고.
 
 ## 번식 — 세션 간 교배 (복제가 아닌 진짜 번식)
 
 여러 세션/프로젝트에서 각각 펫을 키우게 됩니다. 그 펫들을 **교배**해 자손을 만들 수 있어요.
 
-- `/claudchi:breed` — 다른 세션 펫들의 후보 목록을 봅니다.
-- `/claudchi:breed 1 2` — 1번과 2번을 교배 → 자손 알이 대기열에 생깁니다.
+- `/claudochi:breed` — 다른 세션 펫들의 후보 목록을 봅니다.
+- `/claudochi:breed 1 2` — 1번과 2번을 교배 → 자손 알이 대기열에 생깁니다.
   다음에 새 세션을 열면(또는 현재 펫이 수명을 다하면) 그 자손이 부화합니다.
-- `/claudchi:family` — 역대 세대 묘비 + 현재 살아있는 펫의 가계도를 봅니다.
+- `/claudochi:family` — 역대 세대 묘비 + 현재 살아있는 펫의 가계도를 봅니다.
 
 각 펫은 **genome**(지능/성실/청결 선천 편향 + 색·액세서리·가문명 형질)을 가지며,
 두 부모의 genome이 **결정적으로 재조합**(랜덤 아님)되어 같은 종이라도 개체가 유니크합니다.
@@ -67,12 +70,13 @@
 
 ## 깜짝 미니게임
 
-가끔(낮은 확률 + 쿨다운) 이벤트가 발생합니다.
+> **기본 비활성**입니다. `CLAUDOCHI_MINIGAMES=1`로 켜면, 가끔(낮은 확률 + 쿨다운)
+> 아래 이벤트가 발생합니다. (성장·스탯 채점 같은 핵심 기능은 미니게임과 무관하게 늘 동작.)
 
 - 😤 **삐짐** — 오래 방치하면 클로드가 삐져서 **도구 사용이 막힙니다**.
-  다정한 말("고마워, 잘하고 있어")을 건네면 풀리고 ❤️유대가 오릅니다.
+  다정한 말("고마워, 잘하고 있어")을 건네면 풀리고 ❤️교감가 오릅니다.
 - ⏱️ **반응 챌린지 / ⚡ QTE** — 빠른 승인으로 ⭐순발력을 얻습니다.
-- 🧠 **깜짝 퀴즈** — AI 활용 퀴즈에 답하면 ❤️유대·🧠지능이 오릅니다.
+- 🧠 **깜짝 퀴즈** — AI 활용 퀴즈에 답하면 ❤️교감·🧠지능이 오릅니다.
 
 > ⚠️ **솔직한 한계**: Claude Code 플러그인에는 cron형 타이머도, 실시간 키 입력
 > 채널도 없습니다. 그래서 "완전한 불시 이벤트"나 "정밀 키 타이밍 QTE"는 불가능합니다.
@@ -89,8 +93,8 @@
 마켓플레이스/로컬 플러그인으로 추가합니다 (Claude Code 버전에 맞는 방식 사용):
 
 ```
-/plugin marketplace add https://github.com/maetdori/claudchi.git
-/plugin install claudchi
+/plugin marketplace add https://github.com/maetdori/claudochi.git
+/plugin install claudochi
 ```
 
 또는 이 저장소를 로컬에 클론한 뒤 로컬 마켓플레이스로 추가하세요.
@@ -109,16 +113,16 @@
 {
   "statusLine": {
     "type": "command",
-    "command": "node \"<경로>/claudchi/statusline/claudchi.mjs\"",
+    "command": "node \"<경로>/claudochi/statusline/claudochi.mjs\"",
     "padding": 0,
     "refreshInterval": 3000
   },
   "hooks": {
-    "SessionStart": [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/init.mjs\"" }] }],
-    "PreCompact":   [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/init.mjs\"" }] }],
-    "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/feed.mjs\"" }] }],
-    "PreToolUse":  [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/gate.mjs\"" }] }],
-    "PostToolUse": [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"<경로>/claudchi/hooks/hygiene.mjs\"" }] }]
+    "SessionStart": [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudochi/hooks/init.mjs\"" }] }],
+    "PreCompact":   [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudochi/hooks/init.mjs\"" }] }],
+    "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "node \"<경로>/claudochi/hooks/feed.mjs\"" }] }],
+    "PreToolUse":  [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"<경로>/claudochi/hooks/gate.mjs\"" }] }],
+    "PostToolUse": [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"<경로>/claudochi/hooks/hygiene.mjs\"" }] }]
   }
 }
 ```
@@ -128,18 +132,20 @@
 
 ## 설정
 
-- `CLAUDCHI_LLM=1` + `ANTHROPIC_API_KEY` — 프롬프트 품질을 휴리스틱 대신 가벼운
+- `CLAUDOCHI_LLM=1` + `ANTHROPIC_API_KEY` — 프롬프트 품질을 휴리스틱 대신 가벼운
   모델(기본 `claude-haiku-4-5`)로 채점합니다. 실패/타임아웃 시 휴리스틱으로 자동 대체.
   미설정 시 기본은 **휴리스틱(무료·즉시)**.
-- `CLAUDCHI_LLM_MODEL` — 채점에 쓸 모델 ID 오버라이드.
-- `CLAUDCHI_SPRITE=mini` — 펫을 픽셀아트(여러 줄) 대신 **한 줄 이모지**로 표시.
+- `CLAUDOCHI_LLM_MODEL` — 채점에 쓸 모델 ID 오버라이드.
+- `CLAUDOCHI_SPRITE=mini` — 펫을 픽셀아트(여러 줄) 대신 **한 줄 이모지**로 표시.
   상태표시줄을 작게 쓰고 싶을 때. (기본은 트루컬러 픽셀 마스코트, 256색 자동 폴백)
-- `CLAUDCHI_MINIGAMES=0` — 깜짝 퀴즈·반응 챌린지 같은 **불시 미니게임을 끕니다**.
-  (방치 시 삐짐은 케어 요소라 영향 없음.) `off`/`false`/`no` 도 동일.
+- `CLAUDOCHI_MINIGAMES=1` — 깜짝 퀴즈·반응 챌린지·삐짐 등 **미니게임을 켭니다 (기본 꺼짐)**.
+  `on`/`true`/`yes` 도 동일.
+- `CLAUDOCHI_LIFESPAN=40` — 수명(=죽는 컨텍스트 %)을 **1~100**으로 조절. 기본 40.
+  단계 경계(알/유아기/…/성체)는 이 값에 비례해 자동 확장됩니다.
 
 ## 데이터 위치
 
-모든 상태는 `~/.claude/claudchi/` 아래에 저장됩니다.
+모든 상태는 `~/.claude/claudochi/` 아래에 저장됩니다.
 
 - `state-<session_id>.json` — 세션별(=펫별) 상태
 - `graveyard.json` — 역대 세대 묘비/족보
@@ -151,7 +157,7 @@
 
 | 구성요소 | 이벤트 | 하는 일 |
 |---|---|---|
-| `statusline/claudchi.mjs` | (상태표시줄 갱신) | 컨텍스트%로 나이 계산·진화·죽음 기록·렌더 |
+| `statusline/claudochi.mjs` | (상태표시줄 갱신) | 컨텍스트%로 나이 계산·진화·죽음 기록·렌더 |
 | `hooks/feed.mjs` | UserPromptSubmit | 품질→🧠, 규칙성→⚡, 삐짐 해제, 퀴즈 |
 | `hooks/gate.mjs` | PreToolUse | 삐짐 시 도구 차단, 반응 챌린지 발동 |
 | `hooks/hygiene.mjs` | PostToolUse | 도구 에러→🧼, 반응 챌린지 채점→⭐ |

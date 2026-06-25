@@ -8,7 +8,7 @@
 import { readInput, emitAdditionalContext } from '../lib/io.mjs';
 import { loadOrCreate, saveState } from '../lib/state.mjs';
 import { scorePrompt, diligenceDelta, detectAffection, checkQuizAnswer, pickQuiz } from '../lib/score.mjs';
-import { shouldTrigger, QUIZ_CHANCE, clearSulk, setSulk, setQuiz, resolveQuiz } from '../lib/minigame.mjs';
+import { shouldTrigger, QUIZ_CHANCE, clearSulk, setSulk, setQuiz, resolveQuiz, MINIGAMES_ON } from '../lib/minigame.mjs';
 
 const input = await readInput();
 const sessionId = input.session_id || input.sessionId || 'unknown';
@@ -50,7 +50,7 @@ if (!state.dead) {
   if (intel >= 1.5) state.actionUntil = now + 6000;
 
   // long neglect upsets the pet
-  if (dilig <= -1 && !state.sulking) setSulk(state, '너무 오래 혼자 뒀어요');
+  if (MINIGAMES_ON && dilig <= -1 && !state.sulking) setSulk(state, '너무 오래 혼자 뒀어요');
 
   state.lastPromptTs = now;
 
@@ -58,7 +58,7 @@ if (!state.dead) {
   if (!state.quizPending && shouldTrigger(state, now, QUIZ_CHANCE)) {
     const quiz = pickQuiz(now);
     setQuiz(state, quiz, now);
-    note = `🧠 [클로드 키우기 깜짝 퀴즈] 사용자에게 이 질문을 자연스럽게 내고 답을 기다려 주세요: "${quiz.q}"`;
+    note = `🧠 [클로도치 깜짝 퀴즈] 사용자에게 이 질문을 자연스럽게 내고 답을 기다려 주세요: "${quiz.q}"`;
   }
 }
 
