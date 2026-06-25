@@ -1,22 +1,16 @@
 #!/usr/bin/env node
 // hooks/gate.mjs — PreToolUse.
 //   * if the pet is sulking, it blocks tool use until you cheer it up
-//   * otherwise it may (rarely) arm a ⏱️ reaction challenge, timing your approval
 
 import { readInput } from '../lib/io.mjs';
 import { loadOrCreate, saveState } from '../lib/state.mjs';
-import { shouldTrigger, REACTION_CHANCE, armReaction, MINIGAMES_ON } from '../lib/minigame.mjs';
-
-const PROMPTING_TOOLS = new Set(['Edit', 'Write', 'MultiEdit', 'NotebookEdit', 'Bash']);
 
 const input = await readInput();
 const sessionId = input.session_id || input.sessionId || 'unknown';
-const tool = input.tool_name || input.toolName || '';
-const now = Date.now();
 
 const state = loadOrCreate(sessionId, input.cwd || '');
 
-if (!state.dead && MINIGAMES_ON && state.sulking) {
+if (!state.dead && state.sulking) {
   // Block the tool — but tell the user exactly how to lift the block.
   process.stdout.write(JSON.stringify({
     hookSpecificOutput: {
@@ -27,11 +21,6 @@ if (!state.dead && MINIGAMES_ON && state.sulking) {
   }));
   saveState(state);
   process.exit(0);
-}
-
-// Not sulking: maybe arm a reaction challenge on a real (permission-prompting) tool.
-if (!state.dead && PROMPTING_TOOLS.has(tool) && shouldTrigger(state, now, REACTION_CHANCE)) {
-  armReaction(state, now);
 }
 
 saveState(state);

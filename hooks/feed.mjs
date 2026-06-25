@@ -3,12 +3,11 @@
 //   * quality of the prompt  -> 🧠 intelligence
 //   * regularity (idle gap)  -> ⚡ diligence
 //   * if sulking + kind words -> cheer up, ❤️ bond
-//   * occasionally fires / resolves a 🧠 surprise quiz
 
 import { readInput, emitAdditionalContext } from '../lib/io.mjs';
 import { loadOrCreate, saveState } from '../lib/state.mjs';
-import { scorePrompt, diligenceDelta, detectAffection, checkQuizAnswer, pickQuiz } from '../lib/score.mjs';
-import { shouldTrigger, QUIZ_CHANCE, clearSulk, setSulk, setQuiz, resolveQuiz, MINIGAMES_ON } from '../lib/minigame.mjs';
+import { scorePrompt, diligenceDelta, detectAffection } from '../lib/score.mjs';
+import { clearSulk, setSulk } from '../lib/minigame.mjs';
 
 const input = await readInput();
 const sessionId = input.session_id || input.sessionId || 'unknown';
@@ -28,16 +27,7 @@ if (!state.dead) {
     }
   }
 
-  // 2) resolve a pending quiz (this prompt counts as the answer)
-  if (state.quizPending) {
-    const correct = checkQuizAnswer(prompt, state.quizPending);
-    resolveQuiz(state, correct);
-    note = correct
-      ? '🧠 깜짝 퀴즈 정답! (❤️유대 ↑, 🧠지능 ↑)'
-      : '🧠 깜짝 퀴즈 오답이었어요. 다음 기회에!';
-  }
-
-  // 3) feed: score quality + regularity
+  // 2) feed: score quality + regularity
   const { intel } = await scorePrompt(prompt);
   const dilig = diligenceDelta(now, state.lastPromptTs);
 
@@ -49,17 +39,10 @@ if (!state.dead) {
   // picks up the window via state.actionUntil).
   if (intel >= 1.5) state.actionUntil = now + 6000;
 
-  // long neglect upsets the pet
-  if (MINIGAMES_ON && dilig <= -1 && !state.sulking) setSulk(state, '너무 오래 혼자 뒀어요');
+  // long neglect upsets the pet → it sulks (the one surprise event we keep)
+  if (dilig <= -1 && !state.sulking) setSulk(state, '너무 오래 혼자 뒀어요');
 
   state.lastPromptTs = now;
-
-  // 4) maybe spring a surprise quiz (ask Claude to pose it to the user)
-  if (!state.quizPending && shouldTrigger(state, now, QUIZ_CHANCE)) {
-    const quiz = pickQuiz(now);
-    setQuiz(state, quiz, now);
-    note = `🧠 [클로도치 깜짝 퀴즈] 사용자에게 이 질문을 자연스럽게 내고 답을 기다려 주세요: "${quiz.q}"`;
-  }
 }
 
 saveState(state);
