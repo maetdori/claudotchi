@@ -1,0 +1,13 @@
+{
+  "name": "maetdori-marketplace",
+  "owner": {
+    "name": "maetdori"
+  },
+  "plugins": [
+    {
+      "name": "claude-tamagotchi",
+      "source": "./",
+      "description": "클로드 키우기 — a Tamagotchi-style virtual pet for Claude Code that grows from how you use AI."
+    }
+  ]
+}
