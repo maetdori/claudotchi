@@ -64,7 +64,7 @@
 - 🌟 **레전도치** (시크릿): 명문 혈통 3세대↑ + 깊은 교감 ❤️10↑ → 마스터도치 자리에서 분기
 - 🐱 **냥냥도치** (시크릿): 마페도치를 교감만렙 ❤️12↑로 키우면 고양이로 분기
 
-> 전 종류의 모습·등급·프로필은 **[웹 도감 → dogam.html](dogam.html)**. (`node lib/dogam.mjs`·`node lib/growth-svg.mjs`로 재생성)
+> 전 종류의 모습·등급·프로필은 **[웹 도감 열기 ↗](https://htmlpreview.github.io/?https://github.com/maetdori/claudochi/blob/main/dogam.html)**. (GitHub은 HTML을 코드로만 보여줘서 프리뷰 프록시로 엽니다. 로컬에선 `dogam.html`을 브라우저로 열거나 `node lib/dogam.mjs`로 재생성.)
 
 ## 번식 (세션 간 교배)
 
