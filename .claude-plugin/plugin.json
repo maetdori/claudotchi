@@ -1,6 +1,6 @@
 {
   "name": "claudochi",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "클로도치 — raise a Claude pet that grows through a fixed family tree based on how well you use AI. Prompt quality, diligence and tool-hygiene shape which of 12 adult forms (+2 hidden) it becomes; context-window usage is its lifespan; pets breed across sessions and a 😤 sulk event nudges you to keep caring.",
   "author": {
     "name": "maetdori"
