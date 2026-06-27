@@ -68,6 +68,6 @@ if (hatched) {
 if (slResult.action === 'installed' || slResult.action === 'updated') {
   parts.push('🎀 펫 상태표시줄을 settings.json에 등록했어요 — 세션을 한 번 새로 열면 화면 하단에 알이 나타납니다.');
 } else if (slResult.action === 'skipped-existing') {
-  parts.push('ℹ️ 이미 사용자 지정 상태표시줄이 있어 그대로 두었어요. 펫을 보려면 statusLine을 claudochi.mjs로 바꿔주세요.');
+  parts.push('ℹ️ 이미 사용자 지정 상태표시줄이 있어 그대로 두었어요. 펫을 보려면 statusLine을 claudotchi.mjs로 바꿔주세요.');
 }
 if (parts.length) emitAdditionalContext(event, parts.join('\n'));

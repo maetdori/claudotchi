@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "claudochi",
+      "name": "claudotchi",
       "source": "./",
       "description": "클로도치 — a Tamagotchi-style virtual pet for Claude Code that grows from how you use AI."
     }

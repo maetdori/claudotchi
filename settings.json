@@ -1,7 +1,7 @@
 {
   "statusLine": {
     "type": "command",
-    "command": "node \"${CLAUDE_PLUGIN_ROOT}/statusline/claudochi.mjs\"",
+    "command": "node \"${CLAUDE_PLUGIN_ROOT}/statusline/claudotchi.mjs\"",
     "padding": 0,
     "refreshInterval": 3000
   }

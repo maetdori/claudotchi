@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// statusline/claudochi.mjs — the pet's face. Runs on every status-line refresh.
+// statusline/claudotchi.mjs — the pet's face. Runs on every status-line refresh.
 //
 // The status line is the only surface that knows the context % (the lifespan
 // clock), so it owns: advancing the pet's FORM along the family tree as it ages,
