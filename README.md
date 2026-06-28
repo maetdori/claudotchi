@@ -4,7 +4,7 @@
 > 컨텍스트 사용량이 **수명**이라, 펫만 봐도 컨텍스트를 얼마나 썼는지 한눈에 알 수 있어요.
 
 ```
-🥚 알 → 🐣 아기도치 → 🐤 (지능) → 🧒 (성실) → 🧑 성체 12종 + 시크릿 2종 → 💀
+🥚 알 → 🐣 아기도치 → 🐤 (지능) → 🧒 (성실) → 🧑 성체 12종 + 시크릿 3종 → 💀
        (수명 = 컨텍스트 0% ───────────────────────────→ 기본 40%, 조절 가능)
 ```
 
@@ -18,6 +18,8 @@
 ```
 
 새 세션을 한 번 열면 끝입니다. statusLine은 **SessionStart 훅이 `~/.claude/settings.json`에 자동 등록**하므로 직접 편집할 필요가 없어요(이미 다른 statusLine이 있으면 덮어쓰지 않습니다). 별도 의존성 없이 **Node.js**만 있으면 됩니다.
+
+설치 직후 설정을 고르고 싶다면 **`/claudotchi:setup`** — 수명·렌더·LLM 채점·삐짐을 질의로 한 번에 선택합니다. 나중에 아무 때나 **`/claudotchi:config`** 로 바꿀 수 있어요(파일 편집·재시작 불필요, 모든 세션 공유).
 
 <details>
 <summary>플러그인 없이 수동 설치</summary>
@@ -42,7 +44,7 @@
 }
 ```
 
-슬래시 명령 `/breed`·`/family`는 `commands/`를 프로젝트 `.claude/commands/` 등으로 복사하세요.
+슬래시 명령(`/breed`·`/family`·`/sulk`·`/config`·`/setup`)은 `commands/`를 프로젝트 `.claude/commands/` 등으로 복사하세요.
 </details>
 
 ## 어떻게 자라나요?
@@ -63,8 +65,9 @@
 
 - 🌟 **레전도치** (시크릿): 명문 혈통 3세대↑ + 깊은 교감 ❤️10↑ → 마스터도치 자리에서 분기
 - 🐱 **냥냥도치** (시크릿): 마페도치를 교감만렙 ❤️12↑로 키우면 고양이로 분기
+- 🍥 **나루토치** (시크릿): 방치도치(낙제생)를 ⚡성실 되돌리기 + 깊은 교감 ❤️10↑로 되살리면 각성하는 언더독
 
-> 전 종류의 모습·등급·프로필은 **[웹 도감 열기 ↗](https://htmlpreview.github.io/?https://github.com/maetdori/claudotchi/blob/main/dogam.html)**. (GitHub은 HTML을 코드로만 보여줘서 프리뷰 프록시로 엽니다. 로컬에선 `dogam.html`을 브라우저로 열거나 `node lib/dogam.mjs`로 재생성.)
+> 소개·가이드·도감·컬렉션을 한 페이지에서 — **[클로도치 웹페이지 ↗](https://maetdori.github.io/claudotchi/)** (사이드바로 메인·가이드·도감·컬렉션 이동, 도감은 크게 보기·크기 조절·PNG 저장·획득 경로). 로컬에선 `node lib/app.mjs`로 `index.html` 재생성 후 브라우저로 열어요.
 
 ## 번식 (세션 간 교배)
 
@@ -78,19 +81,29 @@
 
 오래 방치하면 클로드가 삐져서 **도구 사용이 막힙니다.** 다정한 말("고마워, 잘하고 있어")을 건네면 풀리고 ❤️교감이 올라요. 기본 켜짐입니다.
 
-끄고 켜는 방법:
+끄고 켜는 방법: `/claudotchi:sulk off` / `/claudotchi:sulk on` (또는 아래 `/claudotchi:config sulk`).
 
-- `/claudotchi:sulk off` / `/claudotchi:sulk on` — 슬래시 명령으로 즉시 토글(모든 세션 공유·영속). 인자 없이 `/claudotchi:sulk`만 치면 현재 상태를 보여줍니다.
-- `CLAUDOTCHI_SULK=0` — env로 끄기. 단, 슬래시 명령 설정이 있으면 그쪽이 우선합니다.
+## 설정
 
-## 설정 (선택)
+**슬래시 명령만으로** 전부 됩니다 — 파일 편집·재시작 없이 즉시 적용되고 모든 세션에 공유·영속돼요.
 
-- `CLAUDOTCHI_LLM=1` + `ANTHROPIC_API_KEY` — 프롬프트 품질을 가벼운 모델(`claude-haiku-4-5`)로 채점. 미설정 시 **휴리스틱(무료·즉시)**. `CLAUDOTCHI_LLM_MODEL`로 모델 변경.
-- `CLAUDOTCHI_LIFESPAN=40` — 수명(죽는 컨텍스트 %)을 **1~100**으로 조절. 단계 경계도 비례 확장.
-- `CLAUDOTCHI_SPRITE=mini` — 픽셀아트 대신 **한 줄 이모지**로 표시(작은 상태표시줄용).
-- `CLAUDOTCHI_SULK=0` — 😤 삐짐(다정한 말 건네기) 기능을 끔. 펫이 방치돼도 삐지지 않고 도구를 막지 않아요.
+- **`/claudotchi:setup`** — 질의형 마법사. 아래 4개를 한 번에 선택.
+- **`/claudotchi:config`** — 인자 없이 치면 현재 설정값과 출처(슬래시/ env / 기본값)를 전부 보여줍니다.
+- **`/claudotchi:config <항목> <값>`** — 개별 변경. `<항목> default` 로 초기화.
 
-상태는 `~/.claude/claudotchi/`에 저장됩니다 (`state-<session>.json`·`graveyard.json`·`pending-offspring.json`). 지우면 펫과 가계도가 초기화돼요.
+| 항목 | 값 | 설명 |
+|---|---|---|
+| `lifespan` | 1~100 (기본 40) | 죽는 컨텍스트 %. 단계 경계도 비례 확장 |
+| `sprite` | `pixel` / `mini` | mini = 한 줄 이모지(작은 상태표시줄용) |
+| `llm` | `on` / `off` | on이면 프롬프트 품질을 가벼운 모델로 채점(**`ANTHROPIC_API_KEY` 필요**). off = 휴리스틱(무료·즉시) |
+| `llmModel` | 모델 ID | LLM 채점 모델 (기본 `claude-haiku-4-5`) |
+| `sulk` | `on` / `off` | 😤 방치 시 삐짐 → 다정한 말로 해제 |
+
+예) `/claudotchi:config lifespan 60` · `/claudotchi:config sprite mini`
+
+> 환경변수(`CLAUDOTCHI_LIFESPAN`·`CLAUDOTCHI_SPRITE`·`CLAUDOTCHI_LLM`·`CLAUDOTCHI_LLM_MODEL`·`CLAUDOTCHI_SULK`)도 그대로 **fallback**으로 동작합니다. 단, 슬래시 명령으로 설정한 값이 있으면 그쪽이 우선해요.
+
+설정과 상태는 `~/.claude/claudotchi/`에 저장됩니다 (`config.json`·`state-<session>.json`·`graveyard.json`·`pending-offspring.json`). 지우면 펫과 가계도가 초기화돼요.
 
 <details>
 <summary>동작 원리</summary>
