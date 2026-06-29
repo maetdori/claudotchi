@@ -1,4 +1,4 @@
-# <img src="assets/icon.svg" alt="" height="30" align="middle"> 클로도치
+# <img src="assets/icon.svg" alt="" height="36" align="top"> 클로도치
 
 **Claude Code 플러그인 — <a href="https://maetdori.github.io/claudotchi/" target="_blank" rel="noopener">클로도치무료분양연락주세요010XXXXXXXX</a>**
 
