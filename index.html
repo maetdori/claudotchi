@@ -136,9 +136,11 @@
   .chart{border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.28);cursor:zoom-in;transition:box-shadow .15s,border-color .15s}
   .chart:hover{border-color:rgba(215,119,87,.5);box-shadow:0 8px 34px rgba(0,0,0,.34),0 0 0 3px rgba(215,119,87,.12)}
   .chart svg{width:100%;height:auto;display:block}
-  /* growth-chart lightbox (fullscreen zoom/pan) */
-  .lb[hidden]{display:none}
-  .lb{position:fixed;inset:0;z-index:100;background:rgba(10,8,6,.93);backdrop-filter:saturate(140%) blur(6px);display:flex;flex-direction:column}
+  /* growth-chart lightbox (fullscreen zoom/pan) — ID-scoped so it can't collide with
+     the life-strip's <span class="lb"> stage labels (which black out the page if they
+     inherit this fixed full-screen overlay). */
+  #lb[hidden]{display:none}
+  #lb{position:fixed;inset:0;z-index:100;background:rgba(10,8,6,.93);backdrop-filter:saturate(140%) blur(6px);display:flex;flex-direction:column}
   .lb-bar{display:flex;gap:8px;justify-content:flex-end;align-items:center;padding:14px 16px}
   .lb-btn{width:42px;height:42px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:600 19px/1 inherit;cursor:pointer;display:grid;place-items:center;transition:background .12s}
   .lb-btn:hover{background:#2a2219}
