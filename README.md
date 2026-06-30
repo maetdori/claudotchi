@@ -76,13 +76,14 @@
 
 ## 😤 삐짐
 
-오래 방치하면 클로드가 삐져서 **도구 사용이 막힙니다.** 다정한 말("고마워, 잘하고 있어")을 건네면 풀리고 ❤️교감이 올라요. (별도 설정 없이 항상 켜짐)
+오래 방치하면 클로드가 삐져서 **도구 사용이 막힙니다.** 다정한 말("고마워, 잘하고 있어")을 건네면 풀리고 ❤️교감이 올라요. 기본 켜짐이며, `CLAUDOTCHI_SULK=0`으로 끄면 삐지지도, 도구를 막지도 않습니다.
 
 ## 설정 (선택)
 
 - `CLAUDOTCHI_LLM=1` + `ANTHROPIC_API_KEY` — 프롬프트 품질을 가벼운 모델(`claude-haiku-4-5`)로 채점. 미설정 시 **휴리스틱(무료·즉시)**. `CLAUDOTCHI_LLM_MODEL`로 모델 변경.
 - `CLAUDOTCHI_LIFESPAN=40` — 수명(죽는 컨텍스트 %)을 **1~100**으로 조절. 단계 경계도 비례 확장.
 - `CLAUDOTCHI_SPRITE=mini` — 픽셀아트 대신 **한 줄 이모지**로 표시(작은 상태표시줄용).
+- `CLAUDOTCHI_SULK=0` — 😤 삐짐(다정한 말 건네기) 기능을 끔. 펫이 방치돼도 삐지지 않고 도구를 막지 않아요.
 
 상태는 `~/.claude/claudotchi/`에 저장됩니다 (`state-<session>.json`·`graveyard.json`·`pending-offspring.json`). 지우면 펫과 가계도가 초기화돼요.
 
