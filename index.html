@@ -143,6 +143,14 @@
   .prose pre{background:#0f0c0a;border:1px solid var(--line);border-radius:12px;padding:18px 20px;overflow-x:auto;
     font:13.5px/1.8 ui-monospace,Menlo,monospace;color:#e8e0d0;margin:0 0 14px}
   .prose pre .kw{color:var(--clay)}
+  /* 코드블록 복사 버튼 (JS가 각 <pre>를 .codeblock으로 감싸고 버튼을 붙임) */
+  .codeblock{position:relative}
+  .copybtn{position:absolute;top:8px;right:8px;z-index:2;display:inline-flex;align-items:center;justify-content:center;
+    color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px;cursor:pointer;
+    transition:border-color .12s,color .12s,background .12s}
+  .copybtn svg{display:block}
+  .copybtn:hover{border-color:var(--clay);color:var(--ink)}
+  .copybtn.copied{border-color:var(--clay);color:var(--clay);background:rgba(215,119,87,.12)}
   .prose code{font-family:ui-monospace,Menlo,monospace;font-size:.88em;color:var(--accent);background:var(--panel);padding:1px 6px;border-radius:5px}
   .prose pre code{background:none;color:inherit;padding:0;font-size:1em}
   .prose ul{margin:0 0 16px;padding:0;list-style:none}
@@ -254,7 +262,7 @@
   .cchip i{width:13px;height:13px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
   .kin-wrap{margin-top:6px}
   .kin-row{display:flex;align-items:center;gap:10px;margin:0 0 10px;flex-wrap:wrap}
-  .kin-lbl{font-size:11px;color:var(--muted);min-width:30px;font-weight:600}
+  .kin-lbl{font-size:11px;color:var(--muted);min-width:48px;font-weight:600;white-space:nowrap}
   .kin{display:inline-flex;flex-direction:column;align-items:center;gap:5px;background:var(--panel);border:1px solid var(--line);
     border-radius:11px;padding:9px 10px 7px;cursor:pointer;transition:transform .1s,border-color .12s;width:76px}
   .kin:hover{transform:translateY(-2px);border-color:var(--clay)}
@@ -314,7 +322,7 @@
   <p class="term-cap">클로도치무료분양연락주세요01012345678</p>
   <div class="prose main-prose">
     <p>펫은 컨텍스트를 쓸수록 나이를 먹어요. 기본 수명은 <strong>40%<sup class="fn-mark">*</sup></strong> — 알에서 성체까지 자라다, 다 쓰면 묘비를 남기고 다음 세대로 이어집니다. <strong>어떤 모습으로 컸는가 = 내가 AI를 어떻게 썼는가.</strong></p>
-    <p class="footnote"><span class="fn-mark">*</span> 왜 40%일까요 — 컨텍스트를 다 쓰기 전에 <b>세션을 정리하라는 신호</b>예요. 후반부로 갈수록 응답 품질이 떨어지니, 40%쯤에서 한 생을 마치게 두면 컨텍스트가 늘 넉넉하게 유지돼요. 수명은 <code>/claudotchi:config lifespan &lt;1~100&gt;</code> 으로 조절할 수 있고(단계 경계도 비례), 오래 붙잡는 작업이면 늘리면 됩니다.</p>
+    <p class="footnote"><span class="fn-mark">*</span> 왜 40%일까요 — 컨텍스트를 다 쓰기 전에 <b>세션을 정리하라는 신호</b>예요. 후반부로 갈수록 응답 품질이 떨어지니, 40%쯤에서 한 생을 마치게 두면 컨텍스트가 늘 넉넉하게 유지돼요. 수명은 <code>/claudotchi:config lifespan &lt;1~100&gt;</code> 으로 조절할 수 있어요.</p>
   </div>
   <div class="life-strip"><span class="lnode"><span class="bub sp-egg"><div class="sprite" style="grid-template-columns:repeat(4,1fr)"><i class="pp"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp" style="background:rgb(150,110,80)"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp" style="background:rgb(150,110,80)"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp" style="background:rgb(238,228,205)"></i><i class="pp"></i></div></span><span class="lb">알 · 0%</span></span><span class="arr">→</span><span class="lnode"><span class="bub sp-alklo"><div class="sprite" style="grid-template-columns:repeat(4,1fr)"><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(31,23,20)"></i><i class="pp" style="background:rgb(31,23,20)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i></div></span><span class="lb">유아기</span></span><span class="arr">→</span><span class="lnode"><span class="bub sp-pyeongbeom"><div class="sprite" style="grid-template-columns:repeat(5,1fr)"><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(31,23,20)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(31,23,20)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i></div></span><span class="lb">성장기</span></span><span class="arr">→</span><span class="lnode"><span class="bub sp-diligent_avg"><div class="sprite" style="grid-template-columns:repeat(5,1fr)"><i class="pp"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i><i class="pp"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(31,23,20)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(31,23,20)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i><i class="pp" style="background:rgb(215,119,87)"></i><i class="pp"></i></div></span><span class="lb">청년기</span></span><span class="arr">→</span><span class="lnode"><span class="bub sp-model_citizen"><div class="sprite" style="grid-template-columns:repeat(7,1fr)"><i class="pp"></i><i class="pp"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp"></i><i class="pp"></i><i class="pp"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(31,23,20)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(31,23,20)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp"></i><i class="pp" style="background:rgb(36,29,24)"></i><i class="pp"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp"></i><i class="pp"></i><i class="pp"></i><i class="pp" style="background:rgb(120,195,120)"></i><i class="pp"></i></div></span><span class="lb">성체</span></span><span class="arr">→</span><span class="lnode"><span class="bub sp-grave"><div class="sprite" style="grid-template-columns:repeat(5,1fr)"><i class="pp"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(36,29,24)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(36,29,24)"></i><i class="pp" style="background:rgb(36,29,24)"></i><i class="pp" style="background:rgb(36,29,24)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(36,29,24)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(36,29,24)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i><i class="pp" style="background:rgb(156,160,168)"></i></div></span><span class="lb">죽음 · 40%</span></span></div>
   <div class="main-cta">
@@ -364,7 +372,7 @@ printf '%s\n%s\n' "$mine" "$pet"</code></pre>
     </tbody></table>
 
     <h2><span class="step">3</span> 성장 가계도</h2>
-    <p>성장기 <strong>🧠</strong> → 청년기 <strong>⚡</strong> → 성체 <strong>🧼</strong> 순으로 갈라져 12종의 성체(+히든 3종)가 됩니다.<br><strong>경로 의존적</strong>이라, 초반에 게으르면 나중에 잘해도 최상위 마스터도치엔 닿지 못해요.</p>
+    <p>성장기 <strong>🧠</strong> → 청년기 <strong>⚡</strong> → 성체 <strong>🧼</strong> 순으로 갈라져 12종의 성체(+히든 3종)가 됩니다.</p>
   </div>
   <figure class="chart-full">
     <div class="chart" role="button" tabindex="0" title="클릭하면 크게 볼 수 있어요"><svg xmlns="http://www.w3.org/2000/svg" width="1382" height="874" viewBox="0 0 1382 874" font-family="-apple-system,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif">
@@ -624,9 +632,9 @@ printf '%s\n%s\n' "$mine" "$pet"</code></pre>
   function kinHtml(f){
     var k=f.kin; if(!k) return '';
     var rows='';
-    if(k.parent) rows+='<div class="kin-row"><span class="kin-lbl">부모</span>'+kinThumb(k.parent)+'</div>';
+    if(k.parent) rows+='<div class="kin-row"><span class="kin-lbl">진화 전</span>'+kinThumb(k.parent)+'</div>';
     if(k.siblings && k.siblings.length) rows+='<div class="kin-row"><span class="kin-lbl">형제</span>'+k.siblings.map(kinThumb).join('')+'</div>';
-    return rows ? '<div class="kin-wrap"><h4>계보</h4>'+rows+'</div>' : '';
+    return rows ? '<div class="kin-wrap"><h4>진화 계보</h4>'+rows+'</div>' : '';
   }
   function paletteHtml(f){
     var cs=palette(f); if(!cs.length) return '';
@@ -774,6 +782,30 @@ printf '%s\n%s\n' "$mine" "$pet"</code></pre>
   function end(){ drag=false; stage.classList.remove('dragging'); }
   stage.addEventListener('pointerup',end); stage.addEventListener('pointercancel',end);
   window.addEventListener('resize',function(){ if(!lb.hidden) fit(); });
+})();
+</script>
+<script>
+(function(){
+  var ICO='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+  var CHK='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>';
+  var pres=document.querySelectorAll('.prose pre');
+  for(var i=0;i<pres.length;i++){(function(pre){
+    var wrap=document.createElement('div'); wrap.className='codeblock';
+    pre.parentNode.insertBefore(wrap,pre); wrap.appendChild(pre);
+    var btn=document.createElement('button'); btn.type='button'; btn.className='copybtn';
+    btn.innerHTML=ICO; btn.title='복사'; btn.setAttribute('aria-label','코드 복사');
+    function ok(){ btn.innerHTML=CHK; btn.classList.add('copied'); btn.title='복사됨';
+      setTimeout(function(){ btn.innerHTML=ICO; btn.classList.remove('copied'); btn.title='복사'; },1400); }
+    function fallback(t){ var ta=document.createElement('textarea'); ta.value=t;
+      ta.style.position='fixed'; ta.style.top='-9999px'; document.body.appendChild(ta); ta.focus(); ta.select();
+      try{ document.execCommand('copy'); ok(); }catch(e){} document.body.removeChild(ta); }
+    btn.addEventListener('click',function(){
+      var code=pre.querySelector('code'); var text=(code||pre).innerText.replace(/\n$/,'');
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok,function(){fallback(text);}); }
+      else fallback(text);
+    });
+    wrap.appendChild(btn);
+  })(pres[i]);}
 })();
 </script>
 </body>
